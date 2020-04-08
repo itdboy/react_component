@@ -1,13 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import ClassComponentExternal from './ClassComponentExternal';
+import FunctionComponentExternal from './FunctionComponentExternal';
+import ClassContructorComponentExternal from './ClassContructorComponentExternal';
+
+
+// Function Component
+// Class Component
+// It’s just a function which accepts props and returns a React element. But you can also use the ES6 class syntax to write components.
+
+// The most obvious one difference is the syntax. A function component is just a plain JavaScript function which accepts props as an argument 
+// return a React Element.
+
+// A class component require you to extend from React.Component and create a render function which return a React element
+
+class ClassComponentInternal extends React.Component {
+  render() {
+    return <h1>Class Component Internal</h1>
+  }
+}
+
+
+function FunctionCoponentInternal() {
+  return (
+    <h1>Function Component Internal</h1>
+
+  )
+}
+
+// ตัวอย่าง Props
+class Props1 extends React.Component {
+  render() {
+    return <h1>Props1 receive props from => {this.props.props1}</h1>
+  }
+}
+
+class Props2 extends React.Component {
+
+  render() {
+
+    const const1 = "Constant Props2";
+
+    return (
+
+      <div>
+        <h1>Props2</h1>
+        <Props1 props1="Pros2" />
+        {/* ส่งแบบ direct */}
+        <Props1 props1={const1} />
+        {/* ส่งผ่านตัวแปร */}
+      </div>
+    );
+  }
+}
+
+// const myelement = <Prop brand="Props" />;
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <ClassComponentInternal />
+    <ClassComponentExternal />
+    <ClassContructorComponentExternal />
+    <FunctionCoponentInternal />
+    <FunctionComponentExternal />
+    <Props2 />
+  </React.StrictMode>
+  // myelement
+  ,
   document.getElementById('root')
 );
 

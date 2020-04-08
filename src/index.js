@@ -33,8 +33,27 @@ function FunctionCoponentInternal() {
 
 // ตัวอย่าง Props
 class Props1 extends React.Component {
+  constructor(props) {
+    super(props);
+    // เก็บค่า Props ไว้ใน constructor
+  }
+
   render() {
     return <h1>Props1 receive props from => {this.props.props1}</h1>
+  }
+}
+
+// ตัวอย่าง Props แบบหลายตัวแปร
+class Props3 extends React.Component {
+  constructor(props) {
+    super(props);
+    // เก็บค่า Props ไว้ใน constructor
+  }
+
+
+  render() {
+    return <h1>Props3 receive props from => {this.props.props3.name1}</h1>
+    // props3 อ้างอิงที่ตัวแปร name1
   }
 }
 
@@ -44,6 +63,8 @@ class Props2 extends React.Component {
 
     const const1 = "Constant Props2";
 
+    const const3 = { name1: "Constant3.name1", name2: "Constant3.name2" }
+
     return (
 
       <div>
@@ -51,7 +72,9 @@ class Props2 extends React.Component {
         <Props1 props1="Pros2" />
         {/* ส่งแบบ direct */}
         <Props1 props1={const1} />
-        {/* ส่งผ่านตัวแปร */}
+        {/* ส่งผ่านตัวแปร จะใช้ปีกกา */}
+        <Props3 props3={const3} />
+        {/* ส่งผ่านตัวแปร จะใช้ปีกกา */}
       </div>
     );
   }

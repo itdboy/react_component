@@ -17,6 +17,9 @@ import ClassContructorComponentExternal from './ClassContructorComponentExternal
 
 // A class component require you to extend from React.Component and create a render function which return a React element
 
+// props => คือ argument ที่จะถูกส่งค่าไปที่ component ผ่านทาง html attribute
+
+// state => buid in 
 class ClassComponentInternal extends React.Component {
   render() {
     return <h1>Class Component Internal</h1>
@@ -45,9 +48,11 @@ class Props1 extends React.Component {
 
 // ตัวอย่าง Props แบบหลายตัวแปร
 class Props3 extends React.Component {
+
   constructor(props) {
     super(props);
     // เก็บค่า Props ไว้ใน constructor
+
   }
 
 
@@ -82,6 +87,38 @@ class Props2 extends React.Component {
 
 // const myelement = <Prop brand="Props" />;
 
+class StateSample extends React.Component {
+  // ตัวอย่าง State
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      state1: "State1",
+      state2: "State2",
+      state3: "State3",
+      state4: "State4"
+    }
+  }
+
+  changeState = () => {
+    this.setState({ state1: "new state1" })
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>State Sample</h1>
+        <h2>State1 = {this.state.state1}</h2>
+        <h2>State2 = {this.state.state2}</h2>
+        <h2>State3 = {this.state.state3}</h2>
+        <h2>State4 = {this.state.state4}</h2>
+
+        <button type="button" onClick={this.changeState}>change State</button>
+      </div >
+    )
+  }
+}
 
 ReactDOM.render(
   <React.StrictMode>
@@ -91,7 +128,8 @@ ReactDOM.render(
     <FunctionCoponentInternal />
     <FunctionComponentExternal />
     <Props2 />
-  </React.StrictMode>
+    <StateSample />
+  </React.StrictMode >
   // myelement
   ,
   document.getElementById('root')
